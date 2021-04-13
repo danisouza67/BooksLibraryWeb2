@@ -1,0 +1,33 @@
+{
+  "name": "bookslibraryweb2",
+  "version": "1.0.0",
+  "description": "CA2 IWA -  Books Library - Daniel Souza - 2018364",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danisouzahigh/BooksLibraryWeb2.git"
+  },
+  "keywords": [
+    "books",
+    "library",
+    "collection",
+    "mongo",
+    "db"
+  ],
+  "author": "Daniel Souza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danisouzahigh/BooksLibraryWeb2/issues"
+  },
+  "homepage": "https://github.com/danisouzahigh/BooksLibraryWeb2#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
