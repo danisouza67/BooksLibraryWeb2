@@ -4,18 +4,9 @@ var itemCtrl = require('./item-controller');
 
 router.get('/hello', itemCtrl.getWorld);
 
-router.get("/hello/:foo/:bar", (req, res) =>{
-    res.json({message: "Books Library", data: [
-        req.params.foo,
-        req.params.bar
-    ]});
-    // res.send(user.join("\n"))
+router.get('/hello/:foo/:bar', itemCtrl.getWorldParams);
 
-});
-
-router.post('/hello', (req,res) => {
-    res.json({result: 'Post was sent', data: req.body});
-});
+router.post('/hello', itemCtrl.postWorld);
 
 
 module.exports = router;
