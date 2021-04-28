@@ -4,6 +4,7 @@ logger = require("morgan"),
 cors = require("cors"),
 express = require("express"),
 bodyParser = require("body-parser");
+mongoose = require('mongoose');
 
 var app = express();
 var port = 8000;
@@ -14,17 +15,7 @@ app.use(logger('tiny'));
 app.use(require('./routes'));
 
 
-//create a server object:
-// http
-//   .createServer(function(req, res) {
-//     //   users.forEach(users => {
-//     //       res.write( "Name: " + users.join("\n"));
-//     //   });
-//     res.write( "Name: " + users.join("\n")); //display the list of users on the page
-//     res.write("\n\nMass: " + mass.join("\n"))
-//     res.end(); //end the response
-//   })
-//   .listen(8080); //the server object listens on port 8080
+
 
 let users, mass = [];
 
@@ -39,6 +30,19 @@ let users, mass = [];
     console.log(error);
   }
 })();
+
+
+//Mongoooooose-----
+// mongoose.connect('mongodb://27017-cyan-donkey-z8s39evd.ws-eu03.gitpod.io');
+
+const dbURI = "mongodb://localhost/test";
+
+mongoose.connect(dbURI, {userNewUrlParser: true, useUnifiedTopology: true})
+.then((result) => console.log('connected to db'))
+.catch((err) => console.log(err));
+//-------------
+
+
 
 app.listen(port, (err) => {
     console.log("Listening on port: " + port);
