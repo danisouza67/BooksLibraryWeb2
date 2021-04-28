@@ -10,15 +10,10 @@ var port = 8000;
 
 
 app.use(bodyParser.json())
+app.use(logger('tiny'));
+app.use(require('./routes'));
 
-app.get("/hello/:foo/:bar", (req, res) =>{
-    res.json({message: "Books Library", data: [
-        req.params.foo,
-        req.params.bar
-    ]});
-    // res.send(user.join("\n"))
 
-});
 //create a server object:
 // http
 //   .createServer(function(req, res) {
