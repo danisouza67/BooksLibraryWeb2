@@ -23,6 +23,10 @@ router.put('/users/:id', userCtrl.updateUser);
 router.delete('/users/:id', userCtrl.deleteUser);
 
 
-//route for image
+//route for image  (multer)
+module.exports.UPLOAD_PATH = "uploads";
+var multer = require("multer");
+var upload = multer({dest: module.exports.UPLOAD_PATH})
+var imageCtrl = require('./image-controller.js')
 
 module.exports = router;
