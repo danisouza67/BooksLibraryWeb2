@@ -23,4 +23,6 @@ router.put('/users/:id', userCtrl.updateUser);
 router.delete('/users/:id', userCtrl.deleteUser);
 
 
+//route for image
+
 module.exports = router;
