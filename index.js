@@ -12,22 +12,13 @@ var app = express();
 var port = process.env.PORT || 8000;
 dotenv.config();
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use(logger('tiny'));
 app.use(require('./routes'));
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-    res.sendFile('./public/index.html', { root: __dirname });
-});
 
-app.get('/imageform', (req, res) => {
-    res.sendFile('./public/imageform.html', { root: __dirname });
-});
-
-// app.get('/contact', (req, res) => {
-//     res.sendFile('./landing-page/contact.html', { root: __dirname });
-// });
 
 
 // let users, mass = [];

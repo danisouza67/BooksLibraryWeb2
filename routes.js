@@ -1,28 +1,22 @@
 var express = require('express'),
 router = express.Router();
-var itemCtrl = require('./item-controller');
-userCtrl = require('./user-controller')
+// var itemCtrl = require('./item-controller');
+bookCtrl = require('./book-controller')
 
 // router.post('/hello', itemCtrl.postWorld);
 // router.get('/hello', itemCtrl.getWorld);
 // router.get('/hello/:foo/:bar', itemCtrl.getWorldParams);
 
-//posts..
-router.post('/users', userCtrl.createUser);
-
-//gets..
-router.get('/users', userCtrl.getUsers);
-// router.get('/users/:username', userCtrl.getUserByUsername)           //test only
-router.get('/users/id/:id', userCtrl.getUserById)
-
-//to update..
-router.put('/users/:id', userCtrl.updateUser);
-
-//deletes..
-router.delete('/users/:id', userCtrl.deleteUser);
+//books routes
+router.post('/books', bookCtrl.createBook);
+router.get('/books', bookCtrl.getBooks);
+// router.get('/users/:username', userCtrl.getUserByUsername)       test only
+router.get('/books/id/:id', bookCtrl.getBookById)
+router.put('/books/:id', bookCtrl.updateBook);
+router.delete('/books/:id', bookCtrl.deleteBook);
 
 
-//route for image  (multer)
+//routes for image  (multer)
 module.exports.UPLOAD_PATH = "uploads";
 var multer = require("multer");
 var upload = multer({dest: module.exports.UPLOAD_PATH});
@@ -31,5 +25,21 @@ router.post('/images', upload.single('image'), imageCtrl.uploadImage);
 router.get('/images', imageCtrl.getImages);
 router.get('/images/:id', imageCtrl.getImage);
 router.delete('/images/:id', imageCtrl.deleteImage);
+
+
+
+router.get('/', (req, res) => {
+    res.sendFile('./public/index.html', { root: __dirname });
+});
+
+router.get('/imageform', (req, res) => {
+    res.sendFile('./public/imageform.html', { root: __dirname });
+});
+
+// app.get('/contact', (req, res) => {
+//     res.sendFile('./landing-page/contact.html', { root: __dirname });
+// });
+
+
 
 module.exports = router;
