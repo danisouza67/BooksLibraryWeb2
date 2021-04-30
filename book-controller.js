@@ -2,7 +2,7 @@ var Book = require('./models/book');
 
 //writing on db
 exports.createBook = (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     var newbook = new Book(req.body);
     newbook.save((err, book) => {
         if (err) {
