@@ -11,7 +11,7 @@ bookCtrl = require('./book-controller')
 router.post('/books', bookCtrl.createBook);
 router.get('/books', bookCtrl.getBooks);
 // router.get('/users/:username', userCtrl.getUserByUsername)       test only
-router.get('/books/id/:id', bookCtrl.getBookById)
+router.get('/books/:id', bookCtrl.getBookById)
 router.put('/books/:id', bookCtrl.updateBook);
 router.delete('/books/:id', bookCtrl.deleteBook);
 
