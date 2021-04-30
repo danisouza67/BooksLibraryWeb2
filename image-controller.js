@@ -7,7 +7,7 @@ fs = require('fs'),
 del = require('del')
 
 
-
+//update
 exports.uploadImage = (req, res) => {
     let newImage = new Image()
     newImage.filename =  req.file.filename;
@@ -22,7 +22,8 @@ exports.uploadImage = (req, res) => {
 };
 
 
-exports.getImage = (req,res) => {
+//get all
+exports.getImages = (req,res) => {
     Image.find({}, ' -__v').lean().exec((err, images) => {
         if(err){
             return res.sendStatus(400);
@@ -35,3 +36,35 @@ exports.getImage = (req,res) => {
         res.json(images)
     })
 }
+
+
+//get one
+exports.getImage = function(req, res) {
+    let imgId = req.params.id;
+
+    Image.findById(imgId, (err, image) => {
+        if (err) {
+            return res.sendStatus(400);
+        }
+
+        res.setHeader('Content-Type', 'image/jpeg');
+        fs.createReadStream(path.join(UPLOAD_PATH, image.filename)).pipe(res);
+    });
+};
+
+
+
+//delete
+exports.deleteImage = function(req, res) {
+    let imgId = req.params.id;
+
+    Image.findByIdAndRemove(imgId, (err, image) => {
+        if (err && image) {
+            return res.sendStatus(400);
+        }
+
+        del([path.join(UPLOAD_PATH, image.filename)]).then(deleted => {
+            res.sendStatus(200);
+        });
+    });
+};
