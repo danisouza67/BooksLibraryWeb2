@@ -1,45 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Blog</title>
+  <title>Books Library</title>
 </head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">Books Library</h1>
+    <a href="/views/book" class="btn btn-success">New Book</a>
 
-<body style="background-color: lightsteelblue;">
-
-    <h2>Text input fields</h2>
-
-    <form action="/books">
-        <label for="title">Title:</label><br>
-        <input required type="title" id="title" name="title" value="Book Title"><br>
-
-        <label for="author">Author:</label><br>
-        <input type="text" id="author" name="author" value="Author"><br>
-
-        <label for="gender">Gender:</label><br>
-        <input type="text" id="gender" name="gender" value="Gender"><br>
-
-        <label for="desc">Description:</label><br>
-        <input type="text" id="desc" name="desc" value="Description"><br>
-
-        <label for="year">Year:</label><br>
-        <input type="number" id="year" name="year" value="Year"><br>
-
-        <label for="price">Price:</label><br>
-        <input type="number" id="price" name="price" value="Price"><br>
-
-        <a href="/" class="btn btn-secondary">Cancel</a>
-        
-        <input type="submit" name="submit" class="btn btn-primary" value="Submit">
-    </form>
-
-    <p>Note that the form itself is not visible.</p>
-
-    <p>Also note that the default width of text input fields is 20 characters.</p>
-
+    <% books.forEach(book => { %>
+      <div class="card mt-4">
+        <div class="card-body">
+          <h4 class="card-title"><%= book.title %></h4>
+          <div class="card-subtitle text-muted mb-2">
+            <%= book.author %>
+          </div>
+          <div class="card-text mb-2"><%= book.createdAt.toLocaleDateString() %></div>
+          <div class="card-text mb-2"><%= book.gender %></div>
+          <div class="card-text mb-2"><%= book.desc %></div>
+          <div class="card-text mb-2"><%= book.year %></div>
+          <div class="card-text mb-2"><%= book.price %></div>
+          <a href="book/<%= book.id %>" class="btn btn-primary">Read More</a>
+          <a href="book/edit/<%= book.id %>" class="btn btn-info">Edit</a>
+          <form action="/book/<%= book.id %>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
 </body>
-
 </html>

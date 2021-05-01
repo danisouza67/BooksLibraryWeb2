@@ -8,13 +8,15 @@ bookCtrl = require('./book-controller')
 // router.get('/hello/:foo/:bar', itemCtrl.getWorldParams);
 
 //books routes
-router.post('/books', bookCtrl.createBook);
+router.get('/', bookCtrl.getBooks);
+router.post('/book', bookCtrl.createBook);
 router.get('/books', bookCtrl.getBooks);
 // router.get('/users/:username', userCtrl.getUserByUsername)       test only
-router.get('/books/:id', bookCtrl.getBookById)
-router.put('/books/:id', bookCtrl.updateBook);
-router.delete('/books/:id', bookCtrl.deleteBook);
+router.get('/book/:id', bookCtrl.getBookById)
+router.put('/book/:id', bookCtrl.updateBook);
+router.delete('/book/:id', bookCtrl.deleteBook);
 router.get('/book', bookCtrl.newBook);
+router.get('/edit/:id', bookCtrl.editBook)
 
 
 //routes for image  (multer)
@@ -29,9 +31,7 @@ router.delete('/images/:id', imageCtrl.deleteImage);
 
 
 
-router.get('/', (req, res) => {
-    res.render('index');
-});
+
 
 router.get('/imageform', (req, res) => {
     res.sendFile('./public/imageform.html', { root: __dirname });
