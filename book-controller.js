@@ -7,10 +7,18 @@ exports.createBook = (req, res) => {
     newbook.save((err, book) => {
         if (err) {
             res.status(400).json(err);
+            // res.render('book', {book: book})
         }
 
         res.json(book);
+
     });
+            // res.redirect(`/books/${newbook.id}`);
+
+};
+
+exports.newBook = (req, res) => {
+    res.render('book', {Book : new Book() })
 };
 
 //reading form db
@@ -23,7 +31,7 @@ exports.getBooks = (req, res) => {
     });
 };
 
-//getting user by id
+//getting book by id
 exports.getBookById = (req, res) => {
     Book.findOne({ _id: req.params.id }, (err, book) => {
         if (err) {

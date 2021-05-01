@@ -12,12 +12,14 @@ var app = express();
 var port = process.env.PORT || 8000;
 dotenv.config();
 
+app.set('view engine', 'ejs')
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(logger('tiny'));
 app.use(require('./routes'));
 app.use(express.static('public'))
-
+app.use(express.urlencoded({extended: false}))
 
 
 

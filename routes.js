@@ -14,6 +14,7 @@ router.get('/books', bookCtrl.getBooks);
 router.get('/books/:id', bookCtrl.getBookById)
 router.put('/books/:id', bookCtrl.updateBook);
 router.delete('/books/:id', bookCtrl.deleteBook);
+router.get('/book', bookCtrl.newBook);
 
 
 //routes for image  (multer)
@@ -29,7 +30,7 @@ router.delete('/images/:id', imageCtrl.deleteImage);
 
 
 router.get('/', (req, res) => {
-    res.sendFile('./public/index.html', { root: __dirname });
+    res.render('index');
 });
 
 router.get('/imageform', (req, res) => {

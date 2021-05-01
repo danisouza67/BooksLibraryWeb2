@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog</title>
+</head>
+
+<body style="background-color: lightsteelblue;">
+
+    <h2>Text input fields</h2>
+
+    <form action="/books">
+        <label for="title">Title:</label><br>
+        <input required type="title" id="title" name="title" value="Book Title"><br>
+
+        <label for="author">Author:</label><br>
+        <input type="text" id="author" name="author" value="Author"><br>
+
+        <label for="gender">Gender:</label><br>
+        <input type="text" id="gender" name="gender" value="Gender"><br>
+
+        <label for="desc">Description:</label><br>
+        <input type="text" id="desc" name="desc" value="Description"><br>
+
+        <label for="year">Year:</label><br>
+        <input type="number" id="year" name="year" value="Year"><br>
+
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price" value="Price"><br>
+
+        <a href="/" class="btn btn-secondary">Cancel</a>
+        
+        <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+    </form>
+
+    <p>Note that the form itself is not visible.</p>
+
+    <p>Also note that the default width of text input fields is 20 characters.</p>
+
+</body>
+
+</html>
