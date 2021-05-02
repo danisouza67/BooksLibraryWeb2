@@ -26,13 +26,13 @@
             <div class="card-body">
                 <h4 class="card-title"><%= book.title %></h4>
                 <div class="card-subtitle text-muted mb-2">
-                    <%= book.author %>
+                 <p>Author: <br><%- book.author %> </p>
                 </div>
-                <div class="card-text mb-2"><%= book.createdAt.toLocaleDateString() %></div>
-                <div class="card-text mb-2"><%= book.gender %></div>
-                <div class="card-text mb-2"><%= book.desc %></div>
-                <div class="card-text mb-2"><%= book.year %></div>
-                <div class="card-text mb-2"><%= book.price %></div>
+                <div class="card-text mb-2">Date added: <%= book.createdAt.toLocaleDateString() %></div>
+                <div class="card-text mb-2"><p>Gender: <br><%- book.gender %> </p></div>
+                <div class="card-text mb-2"><p>Description: <br><%- book.desc %> </p></div>
+                <div class="card-text mb-2"><p>Year: <br><%- book.year %> </p></div>
+                <div class="card-text mb-2"> <p>Price: <br><%- book.price %> </p></div>
                 <a href="book/<%= book.id %>" class="btn btn-primary" style="background: rgba(25, 108, 131, 0.9);">Read
                     More</a>
                 <a href="edit/<%= book.id %>" class="btn btn-info">Edit</a>
