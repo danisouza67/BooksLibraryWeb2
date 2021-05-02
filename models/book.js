@@ -1,3 +1,6 @@
+//the object js was was modificated to adapt to my project 
+//    The original code source is: https://github.com/mikhail-cct/iwa2-test
+
 var mongoose = require('mongoose');
 
 var bookSchema = new mongoose.Schema({ 

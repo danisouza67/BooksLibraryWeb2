@@ -1,11 +1,12 @@
-const http = require("http"),
-axios = require("axios"), 
-logger = require("morgan"),
-cors = require("cors"),
-express = require("express"),
+//the server js was was modificated to adapt to my project 
+//    The original code source is: https://github.com/mikhail-cct/iwa2-test
+// the env settings is set into to variables environment in both frameworks, Gitpod and Heroku
+
+const express = require("express"),
 bodyParser = require("body-parser"),
 mongoose = require('mongoose'),
-dotenv = require('dotenv');
+dotenv = require('dotenv'),
+methodOverride = require('method-override');
 
 
 var app = express();
@@ -14,38 +15,16 @@ dotenv.config();
 
 app.set('view engine', 'ejs')
 
-app.use(cors())
-app.use(bodyParser.json())
-app.use(logger('tiny'));
+app.use(methodOverride('_method'))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(require('./routes'));
-app.use(express.static('public'))
-app.use(express.urlencoded({extended: false}))
 
 
 
-// let users, mass = [];
-
-// (async function getNames() {
-//   try {
-//     const { data } = await axios.get(
-//       "https://swapi.dev/api/people/"
-//     );
-//     users = data.results.map(char => char.name);
-//     mass = data.results.map(char => char.mass)
-//   } catch (error) {
-//     console.log(error);
-//   }
-// })();
-
-
-//Mongoooooose-----
-// mongoose.connect('mongodb://27017-cyan-donkey-z8s39evd.ws-eu03.gitpod.io');
-
-// const dbURI = "mongodb://localhost/test";
 const dbURI = process.env.DB_URL;
 
 
-mongoose.connect(dbURI, {userNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(dbURI, {userNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true, useFindAndModify: false})
 .then((result) => console.log('connected to db'))
 .catch((err) => console.log(err));
 //-------------
@@ -55,4 +34,4 @@ mongoose.connect(dbURI, {userNewUrlParser: true, useUnifiedTopology: true})
 app.listen(port, (err) => {
     console.log("Listening on port: " + port);
 });
-// app.use(logger('dev'));
+
